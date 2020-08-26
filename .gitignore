@@ -1,0 +1,3 @@
+docker-compose.override*
+*__pycache__*
+*secrets.env*
