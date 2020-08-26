@@ -1,0 +1,2 @@
+CREATE SCHEMA flask_app;
+GRANT ALL PRIVILEGES ON SCHEMA flask_app TO flask;

@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+
+  flask:
+    # build: ./flask
+    image: romanmc72/flask:0.0.2
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.dev
+    volumes:
+      - ../../flask_app:/usr/src/app
+    entrypoint: 
+      - "/home/flask_user/entrypoint.sh"
+    depends_on: 
+      - db
+
+  db:
+    # build: ../db/postgres/images
+    image: romanmc72/flask-db:0.0.1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+
+    # This ought to allow the data to
+    # persist across container restarts
+    # volumes:
+    #   - ../db/postgres/postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer:4.7.3
+    restart: always
+    ports:
+      - 9000:8080
