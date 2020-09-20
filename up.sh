@@ -4,9 +4,10 @@
 # Lives at the root here and can be
 # symlinked to the other directories
 # for ease of use
+PORT=$1
 
 set -euxo pipefail
 
 docker-compose up -d --build
 docker ps
-open http://localhost:5000
+open http://localhost:$PORT

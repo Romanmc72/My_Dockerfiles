@@ -6,7 +6,8 @@ services:
     image: romanmc72/flask-db:0.0.1
     restart: always
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_USER: flask
+      POSTGRES_PASSWORD: not_the_password
     ports:
       - 5432:5432
 

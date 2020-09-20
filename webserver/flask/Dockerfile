@@ -8,7 +8,17 @@ FROM python:3.8.0-alpine
 # but in order to install that you need all of this junk
 RUN apk update && \
     apk add --virtual build-deps gcc python-dev musl-dev && \
-    apk add postgresql-dev
+    apk add postgresql-dev && \
+    apk add \
+    --no-cache \
+    --virtual \
+    .pynacl_deps \
+    build-base \
+    python3-dev \
+    libffi-dev \
+    openssl-dev \
+    py3-paramiko
+
 
 # Nobody likes you when you run under root
 RUN adduser --disabled-password flask_user flask_user 
