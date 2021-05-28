@@ -29,7 +29,7 @@ spec:
               value: scoreboard-db
             - name: REDIS_PORT
               value: "6379"
-          image: romanmc72/scoreboard:0.0.1
+          image: romanmc72/scoreboard:0.0.2
           name: scoreboard
           ports:
             - containerPort: 5000
