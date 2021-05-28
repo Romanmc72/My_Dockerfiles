@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+
+  scoreboard:
+    image: romanmc72/scoreboard:0.0.2
+    ports:
+      - 5000:5000
+    depends_on: 
+      - scoreboard-db
+    environment:
+      REDIS_HOST: scoreboard-db
+      REDIS_PORT: 6379
+
+  scoreboard-db:
+    image: redis:5.0.2-alpine
+    restart: always
+    ports:
+      - 6379:6379

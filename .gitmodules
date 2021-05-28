@@ -1,0 +1,3 @@
+[submodule "apps/scoreboard/app"]
+	path = apps/scoreboard/app
+	url = https://github.com/Romanmc72/scoreboard.git
