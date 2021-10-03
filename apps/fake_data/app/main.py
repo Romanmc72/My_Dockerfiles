@@ -1,21 +1,45 @@
 #!/usr/bin/env python3
 """FastAPI simple app to generate fake data."""
 import json
+import os
+from typing import Dict
+from typing import Literal
 from typing import Optional
 
 from faker import Faker
 from fastapi import FastAPI
 from pydantic import BaseModel
+from mangum import Mangum
 
-app = FastAPI()
+ROOT_PATH = os.getenv("ROOT_PATH", None)
+
+app = FastAPI(title="fake-data-api", root_path=ROOT_PATH)
 faker = Faker()
+
+FAKER_OPTIONS = [option for option in dir(faker) if not option.startswith("_")]
+
+
+class DefaultFake(BaseModel):
+    """The default response for a GET request."""
+
+    name: str
+    residency: str
 
 
 class FakeSchematic(BaseModel):
-    schematic: Optional[dict] = None
+    """
+    Description
+    -----------
+    The schematic describing how your fake json data should look. The dict
+    should have one key "schematic" pointing to the dict describing your fake
+    data. Keys of your dict will be the field names and anything is allowed
+    there, but the values must be a valid python Faker library type.
+    """
+
+    schematic: Optional[Dict[str, Literal[tuple(FAKER_OPTIONS)]]] = None
 
 
-def generate_fake_json(schematic: dict = None):
+def generate_fake_json(schematic: dict = None) -> dict:
     """
     Description
     -----------
@@ -59,7 +83,7 @@ def generate_fake_json(schematic: dict = None):
 
 
 @app.get("/")
-async def get_data():
+async def get_data() -> DefaultFake:
     """
     Description
     -----------
@@ -67,17 +91,20 @@ async def get_data():
 
     Return
     ------
-    Default is
+    Default is `DefaultFake`
+
+    ```JSON
     {
         name: faker.name,
         residency: faker.address
     }
+    ```
     """
     return generate_fake_json()
 
 
 @app.post("/")
-async def custom_fake_data(schematic: FakeSchematic):
+async def custom_fake_data(schematic: FakeSchematic) -> dict:
     """
     Description
     -----------
@@ -87,23 +114,31 @@ async def custom_fake_data(schematic: FakeSchematic):
     ------
     :schematic: FakeSchematic
     A dictionary with the following required structure:
+
+    ```JSON
     {
         "schematic": {
             "key1": "name",
             "key2": "pyint"
         }
     }
+    ```
 
     Return
     ------
     Returns your fake data.
 
     The above example input will yield:
+
+    ```JSON
     {
-        "schematic": {
-            "key1": "Guy Faker",
-            "key2": 1234
-        }
+        "key1": "Guy Faker",
+        "key2": 1234
     }
+    ```
     """
     return generate_fake_json(schematic=schematic.schematic)
+
+
+# This allows the application to be compatible with AWS Lambda
+handler = Mangum(app=app)

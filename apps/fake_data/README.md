@@ -1,13 +1,24 @@
 # Fake Data
 
-This is a Python API that exists to generate fake data. It runs FastAPI and uvicorn.
+This is a Python API that exists to generate fake data. It runs FastAPI and uvicorn locally or in an environment like k8s/docker. There is an image here as well built for use on AWS lambda specifically.
 
-## Running The Container
+Images are published to the following repositories:
+
+```
+# Docker
+romanmc72/fake-data-api:#.#.#
+
+# AWS - lambda specifically
+005071865344.dkr.ecr.us-east-1.amazonaws.com/r0m4n.com/fake-data-api:#.#.#
+```
+
+## Running The Container Locally
 
 you can run it locally with docker like so:
 
 ```bash
-docker run --rm -d -p 8000:8000 romanmc72/fake-data-api:0.0.1
+# Specify which tag you wish to run
+./up.sh "#.#.#"
 ```
 
 You issue a `GET` to get the following schema:
@@ -38,6 +49,10 @@ This will return something like:
     "poops_this_year": 6092
 }
 ```
+
+## Running The Container On AWS Lambda
+
+I have a separate repository devoted to standing up the Lambda function and AWS API Gateway using Hashicorp's [Terraform](https://www.terraform.io/) tool. That repositry and associated code live [here](https://github.com/Romanmc72/terraform-setup/tree/main/lambda). See that readme for how to use it.
 
 ## Other options
 
