@@ -23,4 +23,4 @@ This will simply grab the subscriber count to as many digits as youtube tracks, 
 
 ## Cool, but why?
 
-Some youtubers (cough cough... Mr Beast) allegedly give out large prizes to their N'th subscriber when that N is a multiple of 20 million or so. With this I now have a way to check what the subscriber count is on a daily basis and see how close they are to the threshold, then potentially subscribe at that next big landmark ot win a prize.
+Some youtubers (cough cough... Mr Beast) allegedly give out large prizes to their N'th subscriber when that N is a multiple of 20 million or so. With this I now have a way to check what the subscriber count is on a daily basis and see how close they are to the threshold, then potentially subscribe at that next big landmark to win a prize.
