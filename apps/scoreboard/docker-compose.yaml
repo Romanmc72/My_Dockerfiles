@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
   scoreboard:
-    image: romanmc72/scoreboard:0.0.4
+    image: romanmc72/scoreboard:0.0.6
     ports:
       - 5000:5000
     depends_on: 
