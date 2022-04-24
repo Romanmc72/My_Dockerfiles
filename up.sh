@@ -8,6 +8,8 @@ PORT=$1
 
 set -euxo pipefail
 
+browser_url="http://localhost:${PORT}"
+
 docker-compose up -d --build
 docker ps
-open http://localhost:$PORT
+open $browser_url || echo 'could not open localhost'

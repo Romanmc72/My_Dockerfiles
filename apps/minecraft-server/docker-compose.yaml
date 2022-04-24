@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  minecraft-server:
+    image: romanmc72/minecraft-server:0.0.5
+    environment:
+      MIN_MEM: 1024
+      MAX_MEM: 1024
+    # ports:
+    #  - "25565:25565"
+    #  - "19132:19132"
+    network_mode: 'host'
+    volumes:
+      - "${MINECRAFT_SERVER_DATA}/world:/home/minecraft/world"
+      - "${MINECRAFT_SERVER_DATA}/world_nether:/home/minecraft/world_nether"
+      - "${MINECRAFT_SERVER_DATA}/world_the_end:/home/minecraft/world_the_end"
+    stdin_open: true
+    tty: true
