@@ -4,4 +4,4 @@ The Raspbian team has not published a Docker Image to their Docker hub repo in s
 
 ## Credit
 
-All credit goes to [Mikhail Snetkov <msnetkov@navikey.ru>](https://github.com/navikey/raspbian-bullseye/blob/main/Dockerfile). I basically ripped his Dockerfile and added some very minor adjustments
+All credit goes to Mikhail Snetkov <msnetkov@navikey.ru>. I basically ripped [his Dockerfile](https://github.com/navikey/raspbian-bullseye/blob/main/Dockerfile) and added some very minor adjustments
