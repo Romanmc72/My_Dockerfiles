@@ -16,7 +16,7 @@ You should note that my monero address is in the miner's `config.json`, so if yo
 
 My monero address is:
 
-`82tSJ3atMvcda17xgq8N8vNhaT8uzRY1iTh6PZ8Jt4m6P1AkxJmHpeZZUBCBqvF6tohxib4i91ey7YjrVdHEWdqoGTLz3iT`
+`43KfaYWpJTGWJLxsyv7gT2ASuP7JSbpYwM3bLhBADRGjJpb6iKSpdmBQdqEsGbUzjEAFuFBeu2L8qVCLVnJ5fpWtUxUwKTg`
 
 Thank you if you decide to donate!
 
